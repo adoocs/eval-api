@@ -1,0 +1,41 @@
+# Entornos virtuales
+venv/
+env/
+*.pyc
+__pycache__/
+
+# Archivos de configuración y variables de entorno
+.env
+
+# Logs
+*.log
+
+# Salida de pruebas y cobertura
+.coverage
+htmlcov/
+coverage.xml
+
+# Carpeta de dependencias (si usas pipenv o poetry)
+Pipfile.lock
+poetry.lock
+
+# Archivos de bases de datos temporales
+*.sqlite3
+
+# Carpetas de construcción
+build/
+dist/
+*.egg-info/
+
+# Archivos de sistema
+.DS_Store
+Thumbs.db
+
+# Carpetas de IDEs
+.vscode/
+.idea/
+
+# Otros temporales
+*.tmp
+*.bak
+*.orig

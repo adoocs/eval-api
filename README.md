@@ -2,7 +2,7 @@
 python -m venv venv
 
 # Activar entorno virtual (Windows)
-venv\Scripts\activate
+source venv/Scripts/activate
 # source venv/bin/activate  # Linux/Mac
 
 # Instalar desde requirements.txt
@@ -16,3 +16,6 @@ python run_api.py
 
 # O directamente con uvicorn
 uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
+
+# Para desactivar
+deactivate

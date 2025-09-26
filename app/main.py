@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 from app.api.endpoints import router as api_router
+from app.api.unified_endpoints import router as unified_router
 from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI(
@@ -19,7 +20,7 @@ app.add_middleware(
 
 # Incluir rutas
 app.include_router(api_router, prefix="/api/v1")
-
+app.include_router(unified_router)
 @app.get("/")
 async def root():
     return {"message": "Loan Approval API - Documentación en /docs"}

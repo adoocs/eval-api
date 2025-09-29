@@ -6,3 +6,5 @@ joblib
 python-multipart
 pydantic
 matplotlib
+
+seaborn

@@ -3,7 +3,7 @@ from typing import Optional, List, Dict, Any
 
 class LoanApplication(BaseModel):
     ID: str
-    edad: int = Field(..., ge=18, le=70, description="Edad entre 18 y 70 años")
+    edad: int = Field(..., ge=18, le=80, description="Edad entre 18 y 80 años")
     genero: str = Field(..., pattern='^(F|M)$', description="Género: F o M")
     estado_civil: str = Field(..., description="Estado civil: soltero, casado, viudo, divorciado, conviviente")
     tipo_vivienda: str = Field(..., description="Tipo de vivienda: Propia, Familiar, Alquilada")
@@ -24,14 +24,13 @@ class LoanApplication(BaseModel):
     gastos_operativos: float = Field(..., ge=0, description="Gastos operativos")
     gastos_financieros: float = Field(..., ge=0, description="Gastos financieros")
     gasto_total: Optional[float] = Field(None, ge=0, description="Gasto total calculado")
-    deuda_total_financiera: float = Field(..., ge=0, description="Deuda total financiera")
-    puntaje_experian: int = Field(..., ge=1, le=999, description="Puntaje Experian (1-999)")
+    puntaje_experian: int = Field(..., ge=0, le=999, description="Puntaje Experian (0-999)")
     
     # Nuevos campos para métricas de riesgo
-    capacidad_pago_porcentaje: Optional[float] = Field(None, ge=-100, le=100, description="Capacidad de pago en porcentaje")
-    indice_endeudamiento: Optional[float] = Field(None, ge=0, le=500, description="Índice de endeudamiento")
-    ajuste_historial: Optional[float] = Field(None, ge=0, le=40, description="Ajuste por historial crediticio")
-    riesgo_crediticio: Optional[float] = Field(None, ge=0, le=100, description="Riesgo crediticio total")
+    # capacidad_pago_porcentaje: Optional[float] = Field(None, ge=-100, le=100, description="Capacidad de pago en porcentaje")
+    #indice_endeudamiento: Optional[float] = Field(None, ge=0, le=500, description="Índice de endeudamiento")
+    #ajuste_historial: Optional[float] = Field(None, ge=0, le=40, description="Ajuste por historial crediticio")
+    #riesgo_crediticio: Optional[float] = Field(None, ge=0, le=100, description="Riesgo crediticio total")
 
 class RiskMetrics(BaseModel):
     capacidad_pago_porcentaje: float = Field(..., ge=-100, le=100)
@@ -49,6 +48,8 @@ class PredictionResult(BaseModel):
     razon: str = Field(..., description="Razón de la decisión")
     metricas_riesgo: RiskMetrics
     modelo_metricas: Optional[Dict[str, Any]] = Field(None, description="Métricas del modelo entrenado")
+    tiempo_procesamiento_segundos: Optional[float] = Field(None, description="Tiempo de procesamiento en segundos")
+    tiempo_procesamiento_ms: Optional[float] = Field(None, description="Tiempo de procesamiento en milisegundos")
 
 class BatchPredictionRequest(BaseModel):
     applications: List[LoanApplication]

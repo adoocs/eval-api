@@ -14,9 +14,7 @@
     "gastos_operativos",
     "gastos_financieros",
     "gasto_total",
-    "deuda_total_financiera",
     "puntaje_experian",
-    "capacidad_pago_porcentaje",
     "genero_F",
     "genero_M",
     "estado_civil_casado",
@@ -43,7 +41,7 @@
     "sector_economico_Transporte"
   ],
   "model_type": "RandomForestClassifier",
-  "training_date": "2025-09-28T21:32:35.126359",
+  "training_date": "2025-09-30T01:31:51.563812",
   "model_parameters": {
     "bootstrap": true,
     "ccp_alpha": 0.0,
@@ -65,9 +63,30 @@
     "verbose": 0,
     "warm_start": false
   },
-  "feature_count": 41,
+  "feature_count": 39,
   "classes": [
     0,
     1
-  ]
+  ],
+  "model_metrics": {
+    "accuracy": 0.9025,
+    "precision": 0.8988941548183255,
+    "recall": 0.9443983402489626,
+    "f1_score": 0.9210845811412384,
+    "auc_roc": 0.9733542107048723
+  },
+  "training_info": {
+    "timestamp": "2025-09-30T01:31:51.373599",
+    "training_time_seconds": 0.946766,
+    "model_type": "RandomForestClassifier",
+    "test_set_size": 2000
+  },
+  "cv_scores": [
+    0.9184826472962067,
+    0.9148850342880194,
+    0.9268686868686868,
+    0.9185483870967742,
+    0.9209677419354839
+  ],
+  "cv_mean": 0.9199504994970342
 }

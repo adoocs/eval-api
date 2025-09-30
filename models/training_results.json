@@ -1,16 +1,16 @@
 {
   "training_info": {
-    "timestamp": "2025-09-28T21:32:34.940323",
-    "training_time_seconds": 0.936318,
+    "timestamp": "2025-09-30T01:31:51.373599",
+    "training_time_seconds": 0.946766,
     "model_type": "RandomForestClassifier",
     "test_set_size": 2000
   },
   "performance_metrics": {
-    "accuracy": 0.9695,
-    "precision": 0.9620811287477954,
-    "recall": 0.9837691614066727,
-    "f1_score": 0.9728042799821668,
-    "auc_roc": 0.9976136477489048
+    "accuracy": 0.9025,
+    "precision": 0.8988941548183255,
+    "recall": 0.9443983402489626,
+    "f1_score": 0.9210845811412384,
+    "auc_roc": 0.9733542107048723
   },
   "model_parameters": {
     "bootstrap": true,
@@ -35,180 +35,172 @@
   },
   "training_history": {
     "cv_scores": [
-      0.9791203909373611,
-      0.9692650334075724,
-      0.9749776586237712,
-      0.9825503355704698,
-      0.9740840035746202
+      0.9184826472962067,
+      0.9148850342880194,
+      0.9268686868686868,
+      0.9185483870967742,
+      0.9209677419354839
     ],
-    "cv_mean": 0.975999484422759,
-    "cv_std": 0.0045325430731844325,
+    "cv_mean": 0.9199504994970342,
+    "cv_std": 0.003966750451895202,
     "feature_importance": [
       {
-        "feature": "deuda_total_financiera",
-        "importance": 0.3478787278315961
-      },
-      {
-        "feature": "puntaje_experian",
-        "importance": 0.18158047553054937
-      },
-      {
-        "feature": "capacidad_pago_porcentaje",
-        "importance": 0.1101148620733569
-      },
-      {
-        "feature": "gastos_financieros",
-        "importance": 0.05780450455768868
-      },
-      {
-        "feature": "ingreso_total",
-        "importance": 0.05641461323871147
-      },
-      {
-        "feature": "ingreso_mensual_neto",
-        "importance": 0.036748787802330596
-      },
-      {
-        "feature": "ingreso_adicional",
-        "importance": 0.032307425289208935
-      },
-      {
-        "feature": "ingreso_mensual_bruto",
-        "importance": 0.029262988421091405
-      },
-      {
-        "feature": "gasto_total",
-        "importance": 0.02512833065996015
-      },
-      {
-        "feature": "ingreso_terceros",
-        "importance": 0.01941557291140496
-      },
-      {
-        "feature": "gastos_operativos",
-        "importance": 0.016617358885805376
-      },
-      {
-        "feature": "gasto_basico",
-        "importance": 0.013720444565175972
-      },
-      {
         "feature": "monto_solicitado",
-        "importance": 0.013060057596762892
-      },
-      {
-        "feature": "costo_inversion",
-        "importance": 0.009237465939627862
+        "importance": 0.14082503591855222
       },
       {
         "feature": "plazo",
-        "importance": 0.008401417334424933
+        "importance": 0.13520899677208142
       },
       {
-        "feature": "edad",
-        "importance": 0.0083080575856368
-      },
-      {
-        "feature": "integrantes",
-        "importance": 0.007164774250881842
-      },
-      {
-        "feature": "estado_civil_soltero",
-        "importance": 0.0021100583525516564
-      },
-      {
-        "feature": "tipo_vivienda_Propia",
-        "importance": 0.0013442947793325774
-      },
-      {
-        "feature": "tipo_zona_Urbano",
-        "importance": 0.001342486857317926
-      },
-      {
-        "feature": "zona_geografica_Selva",
-        "importance": 0.001270672089169834
-      },
-      {
-        "feature": "tipo_vivienda_Alquilada",
-        "importance": 0.0012395026365181537
-      },
-      {
-        "feature": "zona_geografica_Costa",
-        "importance": 0.001215015452598689
-      },
-      {
-        "feature": "tipo_zona_Rural",
-        "importance": 0.0011974174436582229
-      },
-      {
-        "feature": "genero_M",
-        "importance": 0.0011381188053980308
-      },
-      {
-        "feature": "genero_F",
-        "importance": 0.0011248983779570132
-      },
-      {
-        "feature": "sector_economico_Comercio",
-        "importance": 0.0011003633841114152
-      },
-      {
-        "feature": "periodo_Semanal",
-        "importance": 0.0010885891367050846
-      },
-      {
-        "feature": "sector_economico_Servicios",
-        "importance": 0.001071353904932787
-      },
-      {
-        "feature": "sector_economico_Transporte",
-        "importance": 0.0010513661173984332
-      },
-      {
-        "feature": "periodo_Quincenal",
-        "importance": 0.001044870112983537
-      },
-      {
-        "feature": "sector_economico_Produccion",
-        "importance": 0.0010444680797154415
-      },
-      {
-        "feature": "tipo_vivienda_Familiar",
-        "importance": 0.0010360858449650137
-      },
-      {
-        "feature": "zona_geografica_Sierra",
-        "importance": 0.0010308334355772413
-      },
-      {
-        "feature": "tipo_zona_Periurbano",
-        "importance": 0.001021354870366701
-      },
-      {
-        "feature": "periodo_Mensual",
-        "importance": 0.0009702628792609582
-      },
-      {
-        "feature": "estado_civil_casado",
-        "importance": 0.0009418736845853552
+        "feature": "ingreso_total",
+        "importance": 0.10532355792959733
       },
       {
         "feature": "periodo_Diario",
-        "importance": 0.0009233445352872986
+        "importance": 0.07265429295835533
       },
       {
-        "feature": "estado_civil_viudo",
-        "importance": 0.00085214953953671
+        "feature": "ingreso_mensual_neto",
+        "importance": 0.06657396127099335
       },
       {
-        "feature": "estado_civil_divorciado",
-        "importance": 0.0008458871705594917
+        "feature": "ingreso_mensual_bruto",
+        "importance": 0.06331444842193136
+      },
+      {
+        "feature": "ingreso_adicional",
+        "importance": 0.06239564707139888
+      },
+      {
+        "feature": "ingreso_terceros",
+        "importance": 0.047030283161242414
+      },
+      {
+        "feature": "gasto_total",
+        "importance": 0.03760988014290619
+      },
+      {
+        "feature": "gasto_basico",
+        "importance": 0.034428677753497915
+      },
+      {
+        "feature": "gastos_operativos",
+        "importance": 0.03310835813576795
+      },
+      {
+        "feature": "gastos_financieros",
+        "importance": 0.02975865593820346
+      },
+      {
+        "feature": "puntaje_experian",
+        "importance": 0.020845183165990325
+      },
+      {
+        "feature": "costo_inversion",
+        "importance": 0.02006010316493407
+      },
+      {
+        "feature": "edad",
+        "importance": 0.019322337292729044
+      },
+      {
+        "feature": "integrantes",
+        "importance": 0.018516793717277512
+      },
+      {
+        "feature": "periodo_Mensual",
+        "importance": 0.015315612551533775
+      },
+      {
+        "feature": "periodo_Semanal",
+        "importance": 0.011979848874893773
+      },
+      {
+        "feature": "periodo_Quincenal",
+        "importance": 0.007681347043707676
+      },
+      {
+        "feature": "estado_civil_soltero",
+        "importance": 0.005090912382222714
+      },
+      {
+        "feature": "tipo_zona_Rural",
+        "importance": 0.00328082531980624
+      },
+      {
+        "feature": "genero_F",
+        "importance": 0.003225475283643622
+      },
+      {
+        "feature": "zona_geografica_Selva",
+        "importance": 0.0030605797413298507
+      },
+      {
+        "feature": "zona_geografica_Sierra",
+        "importance": 0.0030256552077313455
+      },
+      {
+        "feature": "tipo_zona_Urbano",
+        "importance": 0.0030167278798361296
+      },
+      {
+        "feature": "zona_geografica_Costa",
+        "importance": 0.003010086599532269
+      },
+      {
+        "feature": "tipo_vivienda_Propia",
+        "importance": 0.0029927445920720484
+      },
+      {
+        "feature": "genero_M",
+        "importance": 0.0029707122352641284
+      },
+      {
+        "feature": "tipo_vivienda_Familiar",
+        "importance": 0.002928003149637547
+      },
+      {
+        "feature": "tipo_zona_Periurbano",
+        "importance": 0.0028963651967533464
+      },
+      {
+        "feature": "sector_economico_Servicios",
+        "importance": 0.0028161508210326276
+      },
+      {
+        "feature": "tipo_vivienda_Alquilada",
+        "importance": 0.0028019179277883315
+      },
+      {
+        "feature": "sector_economico_Produccion",
+        "importance": 0.002690544802604835
+      },
+      {
+        "feature": "sector_economico_Transporte",
+        "importance": 0.0026635097323526808
+      },
+      {
+        "feature": "sector_economico_Comercio",
+        "importance": 0.002640630981058699
       },
       {
         "feature": "estado_civil_conviviente",
-        "importance": 0.0008288680352982283
+        "importance": 0.0023404983087725977
+      },
+      {
+        "feature": "estado_civil_viudo",
+        "importance": 0.002223791193141718
+      },
+      {
+        "feature": "estado_civil_divorciado",
+        "importance": 0.0022049265827679037
+      },
+      {
+        "feature": "estado_civil_casado",
+        "importance": 0.0021669207770573275
       }
     ]
   },
-  "feature_columns_count": 41
+  "feature_columns_count": 39
 }

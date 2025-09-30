@@ -1,3 +1,4 @@
+import time
 import pandas as pd
 import joblib
 import json
@@ -45,32 +46,46 @@ class LoanPredictor:
             self.is_loaded = False
     
     def calculate_risk_metrics(self, input_data: Dict[str, Any]) -> Dict[str, float]:
-        """Calcular métricas de riesgo para tu tesis"""
+        """Calcular métricas de riesgo con límites aplicados"""
         try:
+            # Obtener valores
             ingresos_totales = input_data.get('ingreso_total', 0)
             gastos_totales = input_data.get('gasto_total', 0)
-            deuda_total = input_data.get('deuda_total_financiera', 0)
+            deuda_total = input_data.get('gastos_financieros', 0)
             puntaje_experian = input_data.get('puntaje_experian', 0)
-            
-            # Tus fórmulas exactas de la tesis
-            capacidad_pago = ((ingresos_totales - gastos_totales) / ingresos_totales) * 100 if ingresos_totales > 0 else -100
-            indice_endeudamiento = (deuda_total / ingresos_totales) * 100 if ingresos_totales > 0 else 100
-            ajuste_historial = (100 - (puntaje_experian / 10)) * 0.4  # Ajuste para Perú
+
+            # Calcular métricas base
+            if ingresos_totales <= 0:
+                capacidad_pago = -100
+                indice_endeudamiento = 500  # Límite máximo
+            else:
+                capacidad_pago = ((ingresos_totales - gastos_totales) / ingresos_totales) * 100
+                indice_endeudamiento = (deuda_total / ingresos_totales) * 100
+
+            ajuste_historial = (100 - (puntaje_experian / 10)) * 0.4
+
+            # Calcular riesgo crediticio
             riesgo_crediticio = (
                 (indice_endeudamiento * 0.4) + 
                 ((1 - (capacidad_pago / 100)) * 100 * 0.4) + 
                 ajuste_historial
             )
-            
+
+            # ✅ APLICAR LÍMITES según tus modelos Pydantic
             return {
-                'capacidad_pago_porcentaje': round(capacidad_pago, 2),
-                'indice_endeudamiento': round(indice_endeudamiento, 2),
-                'ajuste_historial': round(ajuste_historial, 2),
-                'riesgo_crediticio': round(riesgo_crediticio, 2)
+                'capacidad_pago_porcentaje': self._limitar_valor(capacidad_pago, -100, 100),
+                'indice_endeudamiento': self._limitar_valor(indice_endeudamiento, 0, 500),
+                'ajuste_historial': self._limitar_valor(ajuste_historial, 0, 40),
+                'riesgo_crediticio': self._limitar_valor(riesgo_crediticio, 0, 100)
             }
+
         except Exception as e:
-            print(f"Error calculando métricas de riesgo: {e}")
-            return {}
+            print(f"⚠️  Error calculando métricas: {e}")
+
+    def _limitar_valor(self, valor: float, minimo: float, maximo: float) -> float:
+        """Limitar un valor entre un mínimo y máximo"""
+        valor_limitado = max(minimo, min(valor, maximo))
+        return round(valor_limitado, 2)
     
     def preprocess_input(self, input_data: Dict[str, Any]) -> pd.DataFrame:
         """Preprocesar los datos de entrada MEJORADO"""
@@ -130,6 +145,9 @@ class LoanPredictor:
             raise ValueError("Modelo no cargado. Entrene el modelo primero.")
         
         try:
+            # ⏱️ INICIAR CRONÓMETRO
+            start_time = time.time()
+
             # Preprocesar entrada
             processed_data = self.preprocess_input(application_data)
             
@@ -145,6 +163,9 @@ class LoanPredictor:
             mensaje = "APROBADO" if prediction == 1 else "RECHAZADO"
             razon = self.get_decision_reason(prediction, probability, risk_metrics)
             
+            # ⏱️ CALCULAR TIEMPO DE PROCESAMIENTO
+            processing_time = time.time() - start_time
+
             return {
                 'prediccion': int(prediction),
                 'probabilidad_aprobado': prob_aprobado,
@@ -153,7 +174,9 @@ class LoanPredictor:
                 'mensaje': mensaje,
                 'razon': razon,
                 'metricas_riesgo': risk_metrics,
-                'modelo_metricas': self.model_metrics
+                'modelo_metricas': self.model_metrics,
+                'tiempo_procesamiento_segundos': round(processing_time, 4),
+                'tiempo_procesamiento_ms': round(processing_time * 1000, 2)
             }
             
         except Exception as e:
